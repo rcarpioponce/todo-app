@@ -1,32 +1,46 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang="pug">
+  #todo-app-main
+    AppTodo
 </template>
-
+<script>
+import AppTodo from '@/components/AppTodo'
+export default {
+  components: {
+    AppTodo
+  }
+}
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+:root{
+  --dark-bg-color: hsl(235, 21%, 11%);
+  --light-bg-color: hsl(0, 0%, 98%);
+  --input-dark-bg-color: lightblue;
+  --input-light-bg-color: white;
 }
-
-#nav {
-  padding: 30px;
+body{
+  padding:0;
+  margin:0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--light-bg-color);
+  height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#todo-app-main{
+  padding:0;
+  margin:0;
+  width: 1440px;
+  height:auto;
+  background-image: url('./assets/bg-desktop-light.jpg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+body.dark-theme #todo-app-main{
+  background-color: var(--dark-bg-color);
+  background-image: url('./assets/bg-desktop-dark.jpg');
 }
 </style>
