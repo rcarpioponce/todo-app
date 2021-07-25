@@ -1,25 +1,22 @@
 <template lang="pug">
-.check-todo(:class="{ done: isDone }" @click="handleClick")
+.check-todo(:class="{ done: todo.done }" @click="handleClick")
 </template>
 
 <script>
 export default {
   props: {
-    done: {
-      default: false
+    todo: {
+      default: Object,
+      required: true
+    },
+    handlerCheck: {
+      default: Function,
+      required: true
     }
-  },
-  data () {
-    return {
-      isDone: false
-    }
-  },
-  created () {
-    this.isDone = this.done
   },
   methods: {
     handleClick () {
-      this.isDone = !this.isDone
+      this.handlerCheck()
     }
   }
 }
@@ -40,7 +37,7 @@ export default {
   background: unset;
 }
 .check-todo.done{
-  border:0;
+  border-color:#FFF;
   background: url('../assets/icon-check.svg') center center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
 }
 </style>

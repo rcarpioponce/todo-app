@@ -1,11 +1,13 @@
 <template lang="pug">
 .todo(:class="{ done: todo.done }")
-  CheckTodo
+  CheckTodo(:todo.sync="todo" :handlerCheck="handlerCheck")
   .todo-label {{todo.text}}
   .todo-remove
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 import CheckTodo from './CheckTodo'
 export default {
   components: {
@@ -14,6 +16,13 @@ export default {
   props: {
     todo: {
       type: Object
+    }
+  },
+  methods: {
+    ...mapMutations(['handlerDoneTodo']),
+    handlerCheck () {
+      const todo = this.todo
+      this.handlerDoneTodo(todo)
     }
   }
 }
@@ -37,7 +46,7 @@ export default {
 }
 .todo-label{
   padding:0 20px;
-  width: calc(100% - 40px);
+  width: 80%;
 }
 .todo.done .todo-label{
   text-decoration: line-through;
@@ -47,8 +56,8 @@ export default {
 }
 .todo-remove{
   display: none;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background: url('../assets/icon-cross.svg') center center no-repeat;
   cursor: pointer;
 }

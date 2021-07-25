@@ -1,14 +1,43 @@
 <template lang="pug">
 .new-todo
-  CheckTodo
-  input.input-new-todo(type="text" placeholder="Create a new todo...")
+  CheckTodo(:todo.sync="todo" :handlerCheck="handlerCheck")
+  input.input-new-todo(type="text" v-model="todo.text" placeholder="Create a new todo..." v-on:keyup.enter='addTodoHandler')
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import CheckTodo from './CheckTodo'
+
+import { uuid } from 'vue-uuid'
+
 export default {
   components: {
     CheckTodo
+  },
+  data () {
+    return {
+      todo: {
+        id: uuid.v4(),
+        text: '',
+        done: false,
+        order: 500
+      }
+    }
+  },
+  methods: {
+    ...mapMutations(['addTodo']),
+    addTodoHandler () {
+      if (this.todo.text.trim() !== '') {
+        const newTodo = this.todo
+        this.addTodo(newTodo)
+        this.todo.id = uuid.v4()
+        this.todo.text = ''
+        this.todo.done = false
+      }
+    },
+    handlerCheck () {
+      this.todo.done = !this.todo.done
+    }
   }
 }
 </script>
