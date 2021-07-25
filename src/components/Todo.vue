@@ -2,7 +2,7 @@
 .todo(:class="{ done: todo.done }")
   CheckTodo(:todo.sync="todo" :handlerCheck="handlerCheck")
   .todo-label {{todo.text}}
-  .todo-remove
+  .todo-remove(@click="handlerRemove()")
 </template>
 
 <script>
@@ -19,10 +19,14 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['handlerDoneTodo']),
+    ...mapMutations(['handlerDoneTodo', 'removeTodo']),
     handlerCheck () {
       const todo = this.todo
       this.handlerDoneTodo(todo)
+    },
+    handlerRemove () {
+      const todo = this.todo
+      this.removeTodo(todo)
     }
   }
 }

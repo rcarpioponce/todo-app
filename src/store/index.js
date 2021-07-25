@@ -46,6 +46,11 @@ export default new Vuex.Store({
     handlerDoneTodo (state, payLoad) {
       const findTodoKey = state.todoList.findIndex(todo => todo.id === payLoad.id)
       state.todoList[findTodoKey].done = !state.todoList[findTodoKey].done
+    },
+    removeTodo (state, payLoad) {
+      console.log(payLoad)
+      const newTodoList = state.todoList.filter(todo => todo.id !== payLoad.id)
+      Vue.set(state, 'todoList', newTodoList)
     }
   },
   actions: {
