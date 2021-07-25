@@ -42,7 +42,6 @@ export default {
   width: calc(100% - 40px);
   height:60px;
   padding:0 20px;
-  background: white;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -53,6 +52,12 @@ export default {
   width: 80%;
 }
 .todo.done .todo-label{
+  color:hsl(236, 33%, 92%);
+  text-decoration: line-through;
+}
+.dark-theme .todo.done .todo-label{
+  color:hsl(236, 9%, 61%);
+  opacity: .3;
   text-decoration: line-through;
 }
 .todo:hover .todo-remove{
@@ -64,5 +69,8 @@ export default {
   height: 18px;
   background: url('../assets/icon-cross.svg') center center no-repeat;
   cursor: pointer;
+}
+.dark-theme .todo{
+  border-bottom:1px solid var(--gray-color);
 }
 </style>

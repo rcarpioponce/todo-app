@@ -24,8 +24,8 @@ export default {
 
 <style>
 .check-todo{
-  width:20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border:1px solid hsl(236, 33%, 92%);
   border-radius: 50%;
   -moz-border-radius:50%;
@@ -36,8 +36,14 @@ export default {
   cursor:pointer;
   background: unset;
 }
+.dark-theme .check-todo{
+  border:1px solid var(--gray-color);
+}
 .check-todo.done{
-  border-color:#FFF;
+  border-color:white;
   background: url('../assets/icon-check.svg') center center no-repeat, linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+}
+.dark-theme .check-todo.done{
+  border-color: var(--input-dark-bg-color);
 }
 </style>

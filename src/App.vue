@@ -14,8 +14,16 @@ export default {
 :root{
   --dark-bg-color: hsl(235, 21%, 11%);
   --light-bg-color: hsl(0, 0%, 98%);
-  --input-dark-bg-color: lightblue;
-  --input-light-bg-color: white;
+  --input-dark-bg-color: hsl(235, 24%, 19%);
+  --input-light-bg-color: hsl(0, 0%, 98%);
+  --text-dark-color: hsl(0, 0%, 98%);
+  --gray-color: hsl(236, 9%, 61%);
+}
+::placeholder {
+  color: var(--gray-color);
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+
 }
 body{
   padding:0;
@@ -25,6 +33,7 @@ body{
   background-color: var(--light-bg-color);
   height: 100vh;
   font-family: 'Josefin Sans', sans-serif;
+  font-size:18px;
 }
 #todo-app-main{
   padding:0;

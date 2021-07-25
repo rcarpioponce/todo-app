@@ -19,8 +19,7 @@ export default {
       todo: {
         id: uuid.v4(),
         text: '',
-        done: false,
-        order: 500
+        done: false
       }
     }
   },

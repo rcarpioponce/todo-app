@@ -3,6 +3,7 @@
   Header
   NewTodo
   ListTodo
+  p Drag and drop reorder list
 </template>
 
 <script>
@@ -20,6 +21,12 @@ export default {
 
 <style>
 #app-container{
-  width: 520px;
+  width: 600px;
+}
+#app-container p{
+  padding-top:60px;
+  text-align:center;
+  color: hsl(236, 9%, 61%);
+  font-size:16px;
 }
 </style>
