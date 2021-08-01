@@ -1,13 +1,13 @@
 <template lang="pug">
 .todo-list
-  draggable
+  draggable(v-model='todoList')
     transition-group
       Todo(v-for="todo in todoList" :todo="todo" :key="todo.id" )
   FooterListTodo
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 import draggable from 'vuedraggable'
 import Todo from './Todo'
 import FooterListTodo from './FooterListTodo'
@@ -18,7 +18,16 @@ export default {
     FooterListTodo
   },
   computed: {
-    ...mapGetters(['todoList'])
+    todoList: {
+      get () {
+        return this.$store.getters.todoList
+      },
+      set (value) {
+        if (this.$store.getters.getFilter === 'ALL') {
+          this.setTodoList({ newTodoList: value })
+        }
+      }
+    }
   },
   methods: {
     ...mapMutations(['setTodoList'])
@@ -28,7 +37,7 @@ export default {
 
 <style>
 .todo-list{
-  margin-top: 30px;
+  margin-top: 20px;
   box-shadow: -1px 2px 16px 4px rgba(0,0,0,0.49);
   -webkit-box-shadow: -1px 2px 16px 4px rgba(0,0,0,0.49);
   -moz-box-shadow: -1px 2px 16px 4px rgba(0,0,0,0.49);

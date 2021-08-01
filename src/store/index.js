@@ -45,8 +45,10 @@ export default new Vuex.Store({
       if (state.todoFilter === 'ALL') {
         return state.todoList
       } else if (state.todoFilter === 'ACTIVE') {
+        console.log('ACTIVE')
         return state.todoList.filter(todo => todo.done === false)
       } else if (state.todoFilter === 'COMPLETED') {
+        console.log('COMPLETED')
         return state.todoList.filter(todo => todo.done === true)
       }
     },
@@ -60,6 +62,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setTodoList (state, payload) {
+      console.log(payload)
       Vue.set(state, 'todoList', payload.newTodoList)
     },
     handlerTodoFilter (state, payload) {
@@ -70,8 +73,7 @@ export default new Vuex.Store({
       Vue.set(state, 'todoList', newTodoList)
     },
     addTodo (state, payload) {
-      const newTodo = { ...payload }
-      state.todoList.push(newTodo)
+      state.todoList.push({ ...payload })
     },
     handlerDoneTodo (state, payload) {
       const findTodoKey = state.todoList.findIndex(todo => todo.id === payload.id)

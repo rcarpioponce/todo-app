@@ -52,4 +52,22 @@ body.dark-theme #todo-app-main{
   background-color: var(--dark-bg-color);
   background-image: url('./assets/bg-desktop-dark.jpg');
 }
+@media only screen and (max-width:375px) {
+  #app-container{
+   font-size:12px;
+  }
+  #todo-app-main{
+    height:200px;
+    background-image: url('./assets/bg-mobile-light.jpg');
+  }
+  body.dark-theme #todo-app-main{
+    background-image: url('./assets/bg-mobile-dark.jpg');
+  }
+  body.dark-theme{
+    background-color: var(--dark-bg-color);
+  }
+  ::placeholder {
+    font-size: 14px;
+  }
+}
 </style>
